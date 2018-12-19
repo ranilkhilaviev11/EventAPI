@@ -1,0 +1,14 @@
+C:\Users\Ranil_Khilaviev\Desktop\EventAPI\EventAPI\bin\Debug\netcoreapp2.1\EventAPI.deps.json
+C:\Users\Ranil_Khilaviev\Desktop\EventAPI\EventAPI\bin\Debug\netcoreapp2.1\EventAPI.runtimeconfig.json
+C:\Users\Ranil_Khilaviev\Desktop\EventAPI\EventAPI\bin\Debug\netcoreapp2.1\EventAPI.runtimeconfig.dev.json
+C:\Users\Ranil_Khilaviev\Desktop\EventAPI\EventAPI\bin\Debug\netcoreapp2.1\EventAPI.dll
+C:\Users\Ranil_Khilaviev\Desktop\EventAPI\EventAPI\bin\Debug\netcoreapp2.1\EventAPI.pdb
+C:\Users\Ranil_Khilaviev\Desktop\EventAPI\EventAPI\obj\Debug\netcoreapp2.1\EventAPI.csprojAssemblyReference.cache
+C:\Users\Ranil_Khilaviev\Desktop\EventAPI\EventAPI\obj\Debug\netcoreapp2.1\EventAPI.csproj.CoreCompileInputs.cache
+C:\Users\Ranil_Khilaviev\Desktop\EventAPI\EventAPI\obj\Debug\netcoreapp2.1\EventAPI.RazorAssemblyInfo.cache
+C:\Users\Ranil_Khilaviev\Desktop\EventAPI\EventAPI\obj\Debug\netcoreapp2.1\EventAPI.RazorAssemblyInfo.cs
+C:\Users\Ranil_Khilaviev\Desktop\EventAPI\EventAPI\obj\Debug\netcoreapp2.1\EventAPI.AssemblyInfoInputs.cache
+C:\Users\Ranil_Khilaviev\Desktop\EventAPI\EventAPI\obj\Debug\netcoreapp2.1\EventAPI.AssemblyInfo.cs
+C:\Users\Ranil_Khilaviev\Desktop\EventAPI\EventAPI\obj\Debug\netcoreapp2.1\EventAPI.RazorTargetAssemblyInfo.cache
+C:\Users\Ranil_Khilaviev\Desktop\EventAPI\EventAPI\obj\Debug\netcoreapp2.1\EventAPI.dll
+C:\Users\Ranil_Khilaviev\Desktop\EventAPI\EventAPI\obj\Debug\netcoreapp2.1\EventAPI.pdb
