@@ -12485,11 +12485,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ranil_Khilaviev\\Desktop\\EventAPI\\EventAPI\\EventAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Ranil_Khilaviev\\Documents\\GitHub\\EventAPI\\EventAPI\\EventAPI.csproj",
       "projectName": "EventAPI",
-      "projectPath": "C:\\Users\\Ranil_Khilaviev\\Desktop\\EventAPI\\EventAPI\\EventAPI.csproj",
+      "projectPath": "C:\\Users\\Ranil_Khilaviev\\Documents\\GitHub\\EventAPI\\EventAPI\\EventAPI.csproj",
       "packagesPath": "C:\\Users\\Ranil_Khilaviev\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ranil_Khilaviev\\Desktop\\EventAPI\\EventAPI\\obj\\",
+      "outputPath": "C:\\Users\\Ranil_Khilaviev\\Documents\\GitHub\\EventAPI\\EventAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
