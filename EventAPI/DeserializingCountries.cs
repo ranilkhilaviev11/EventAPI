@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace EventAPI
 {
@@ -19,12 +20,15 @@ namespace EventAPI
 
             if (!_context.Country.Any())
             {
-                //string path = File.ReadAllText(@"countries_ru.json");
                 StreamReader re = new StreamReader("countries_ru.json");
                 JsonTextReader reader = new JsonTextReader(re);
                 JsonSerializer JSON = new JsonSerializer();
                 myobjList = JSON.Deserialize<List<Country>>(reader);
-
+                foreach (Country c in myobjList)
+                {
+                    _context.Country.Add(c);
+                }
+                _context.SaveChanges();
             }
         }
     }

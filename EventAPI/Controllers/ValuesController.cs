@@ -16,7 +16,7 @@ namespace EventAPI.Controllers
         [HttpGet]
         public IEnumerable<Country> Get()
         {
-            
+           return db.Country.ToList();
                 //new string[] { "value1", "value2" };
         }
 

@@ -9,17 +9,25 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 
 namespace EventAPI
-{   
+{
     public class MappingProfile : Profile
     {
-        
+
         public MappingProfile()
         {
-          /*  CreateMap<HotelDTO, Hotel>()
-                .ForMember(x => x.HotelRoomType, opt => opt.Ignore())
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<CompanyDTO, Company>()
                 .ForMember(x => x.Participant, opt => opt.Ignore())
+                .ForMember(x => x.MainOfficeCountry, opt => opt.Ignore())
                 .ReverseMap();
-                */
+                cfg.CreateMap<CountryDTO, Country>()
+                .ForMember(x => x.Company, opt => opt.Ignore())
+                .ForMember(x => x.ParticipantCitizenship, opt => opt.Ignore())
+                .ForMember(x => x.ParticipantResidenceCountry, opt => opt.Ignore());
+            });
+
+
         }
 
 

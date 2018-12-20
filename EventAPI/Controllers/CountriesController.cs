@@ -15,20 +15,18 @@ namespace EventAPI.Controllers
     public class CountriesController : ControllerBase
     {
         MailingContext _context = new MailingContext();
-        private readonly IMapper _mapper;
-        public CountriesController(IMapper mapper)
+        private readonly List<Country> _countries;
+        public CountriesController()
         {
-            _mapper = mapper;
+            _countries = _context.Country.ToList();
         }
 
         [HttpGet]
         public IEnumerable<CountryDTO> GetCountry()
         {
-            Country country = new Country();
-            var model = _mapper.Map<Country, CountryDTO>(country);
-            var countries = _context.Country.ToList();
-            List<CountryDTO> list_obj = _mapper.Map<List<Country>, List<CountryDTO>>(countries);
-            
+
+            List<CountryDTO> list_obj = Mapper.Map(_countries, new List<CountryDTO>());
+
             return list_obj;
         }
 
@@ -41,7 +39,7 @@ namespace EventAPI.Controllers
             }
 
             var country = await _context.Country.FindAsync(id);
-            var model = _mapper.Map<CountryDTO>(country);
+            var model = Mapper.Map(country, new CountryDTO());
 
             if (country == null)
             {
@@ -51,6 +49,6 @@ namespace EventAPI.Controllers
             return Ok(model);
         }
 
-        
+
     }
 }
