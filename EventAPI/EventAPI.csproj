@@ -5,7 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Content Remove="Views\Home\eventelem.cshtml" />
+    <Content Remove="Views\Home\events.cshtml" />
+    <Content Remove="Views\Home\index.cshtml" />
+    <Content Remove="Views\Home\participants.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Home\eventelem.cshtml" />
+    <None Include="Views\Home\events.cshtml" />
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\participants.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

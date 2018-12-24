@@ -18,7 +18,7 @@ namespace EventAPI
         public void PostCountries()
         {
 
-            if (!_context.Country.Any())
+            /*if (!_context.Country.Any())
             {
                 StreamReader re = new StreamReader("countries_ru.json");
                 JsonTextReader reader = new JsonTextReader(re);
@@ -29,7 +29,7 @@ namespace EventAPI
                     _context.Country.Add(c);
                 }
                 _context.SaveChanges();
-            }
+            }*/
         }
     }
 }

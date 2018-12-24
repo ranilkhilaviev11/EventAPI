@@ -1,0 +1,56 @@
+﻿.widget {
+    padding: 20px 30px;
+    background: white;
+    font-family: Georgia, sans-serif;
+}
+
+.widgettitle {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: darkred;
+    font-size: 16px;
+    padding-left: 15px;
+    margin-bottom: 15px;
+    border-left: 2px solid #b99d61;
+}
+
+.widgetlist {
+    padding: 0;
+    list-style: none;
+}
+
+    .widgetlist a:before {
+        content: "\2014";
+        margin-right: 14px;
+    }
+
+    .widgetlist a {
+        text-decoration: none;
+        outline: none;
+        display: block;
+        padding: 5px 0;
+        letter-spacing: 1px;
+        font-weight: 300;
+        font-size: 20px;
+        color: sienna;
+        transition: .3s linear;
+    }
+
+        .widgetlist a:hover {
+            color: firebrick;
+        }
+
+.caption {
+    font-size: 28px;
+    background-color: darkred;
+    border: 2px solid darkred;
+    color: cornsilk;
+}
+
+table {
+    font-size: 20px;
+    border-collapse: collapse;
+    width: 100%; /* Ширина таблицы */
+    border: 2px solid darkred; /* Рамка вокруг таблицы */
+    margin: auto; /* Выравниваем таблицу по центру окна  */
+}

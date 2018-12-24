@@ -30,7 +30,7 @@ namespace EventAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddSwaggerGen(c =>
+            /*services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "Contactsе API", Version = "v1" });
             });
@@ -40,7 +40,7 @@ namespace EventAPI
                 mc.AddProfile(new MappingProfile());
             });
             IMapper mapper = mappingConfig.CreateMapper();
-            services.AddSingleton(mapper);
+            services.AddSingleton(mapper);*/
             
         }
 
@@ -59,12 +59,17 @@ namespace EventAPI
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
-            app.UseSwagger();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
+            /*app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Contacts API V1");
-            });
+            });*/
         }
     }
 }
