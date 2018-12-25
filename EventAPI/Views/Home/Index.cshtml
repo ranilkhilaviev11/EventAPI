@@ -18,9 +18,9 @@
         <div class="widget">
             <h3 class="widgettitle">Категории</h3>
             <ul class="widgetlist">
-                <li><a href="/Home/participants">Участники мероприятия</a></li>
-                <li><a href="events.cshtml">Мероприятия</a></li>
-                <li><a href="eventelem.cshtml">Элементы мероприятия</a></li>
+                <li><a href="@Url.Action("Participants", "Home")">Участники мероприятия</a></li>
+                <li><a href="@Url.Action("Events", "Home")">Мероприятия</a></li>
+                <li><a href="@Url.Action("Eventelem", "Home")">Элементы мероприятия</a></li>
             </ul>
         </div>
     </div>

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;
 
-namespace EventAPI
+namespace EventAPI.Models
 {
     public partial class MailingContext : DbContext
     {
@@ -128,11 +128,11 @@ namespace EventAPI
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("EventProgElem_EventId_fkey");
 
-                entity.HasOne(d => d.Type)
+                /*entity.HasOne(d => d.Type)
                     .WithMany(p => p.EventProgElem)
                     .HasForeignKey(d => d.TypeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("EventProgElem_TypeId_fkey");
+                    .HasConstraintName("EventProgElem_TypeId_fkey");*/
             });
 
             modelBuilder.Entity<Hotel>(entity =>
@@ -189,11 +189,11 @@ namespace EventAPI
                     .IsUnique();
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.HasOne(d => d.Newsletter)
+                //Одинаковые?
+                /*entity.HasOne(d => d.Newsletter)
                     .WithMany(p => p.NewsletterToParticipant)
                     .HasForeignKey(d => d.NewsletterId)
-                    .HasConstraintName("Newsletter_to_Participant_NewsletterId_fkey");
+                    .HasConstraintName("Newsletter_to_Participant_NewsletterId_fkey");*/
 
                 entity.HasOne(d => d.Participant)
                     .WithMany(p => p.NewsletterToParticipant)
@@ -270,11 +270,11 @@ namespace EventAPI
                     .IsUnique();
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.HasOne(d => d.EventProgElem)
+                //Одинаковые???
+               /* entity.HasOne(d => d.EventProgElem)
                     .WithMany(p => p.ParticipantToEventProgElem)
                     .HasForeignKey(d => d.EventProgElemId)
-                    .HasConstraintName("Participant_to_EventProgElem_EventProgElemId_fkey");
+                    .HasConstraintName("Participant_to_EventProgElem_EventProgElemId_fkey");*/
 
                 entity.HasOne(d => d.Participant)
                     .WithMany(p => p.ParticipantToEventProgElem)

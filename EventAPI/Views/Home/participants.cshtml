@@ -1,60 +1,139 @@
-<!DOCTYPE HTML>
-<html>
- <head>
-  <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="css/style.css">
- </head>
-    <body>
-        <div>
-            <table border="2" cellpadding="10">
-                <div><caption class="caption">Участники мероприятия</caption></div>
-   <tr>
-    <th>Id</th>
-    <th>Surename</th>
-    <th>Name</th>
-    <th>Middle Name</th>
-    <th>Birth Date</th>
-    <th>Phone Number</th>
-    <th>E-mail</th>
-    <th>Company</th>
-    <th>Post</th>
-    <th>Company Field of Activity</th>
-    <th>Main Office Country</th>
-    <th>Residence Country</th>
-    <th>Citizenship</th>
-    <th>Hotel</th>
-    <th>Type of Room</th>
-    <th>Event</th>
-   </tr>
+﻿@model IEnumerable<EventAPI.Models.Participant>
+
+@{
+    ViewData["Title"] = "participants";
+}
+
+<h2>Participants</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+@*Surname, Name, MiddleName, BirthDate, PhoneNum, Email, Post*@
+<table class="table">
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Post)
+        </th>
+        <th></th>
     </tr>
-            </table>
-            </div> 
-        <div id="sidebar">
-    <div class="widget">
-      <h3 class="widget-title">Категории</h3>
-      <ul class="widget-list">
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="events.html">Мероприятия</a></li>
-        <li><a href="eventelem.html">Элементы мероприятия</a></li>
-      </ul>
-    </div>
-    </div>
-    </body>
-</html>
+       @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MiddleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Post)
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+            <a asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are sure wants to delete?');">Delete</a>
+        </td>
+    </tr>
+    }
+</table>
+
+
+
+
+
+
+@*@<!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+     </head>
+        <body>
+            <div>
+                <table border="1" cellpadding="10">
+                    <caption class="caption">Участники мероприятия</caption>
+                    <tr>
+                        <td>
+                            <Button ID="btnSelect" runat="server" OnClick="btnSelect_Click">Select All Data</Button>
+    </td>
+                    </tr>
+       <tr>
+        <th>Id</th>
+        <th>Surename</th>
+        <th>Name</th>
+        <th>Middle Name</th>
+        <th>Birth Date</th>
+        <th>Phone Number</th>
+        <th>E-mail</th>
+        <th>Company</th>
+        <th>Post</th>
+        <th>Company Field of Activity</th>
+        <th>Main Office Country</th>
+        <th>Residence Country</th>
+        <th>Citizenship</th>
+        <th>Hotel</th>
+        <th>Type of Room</th>
+        <th>Event</th>
+       </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+                </table>
+                </div>
+            <div id="sidebar">
+        <div class="widget">
+          <h3 class="widget-title">Категории</h3>
+          <ul class="widget-list">
+            <li><a href="@Url.Action("Index", "Home")">Главная</a></li>
+            <li><a href="@Url.Action("Events", "Home")">Мероприятия</a></li>
+            <li><a href="@Url.Action("Eventelem", "Home")">Элементы мероприятия</a></li>
+          </ul>
+        </div>
+        </div>
+        </body>
+    </html>*@

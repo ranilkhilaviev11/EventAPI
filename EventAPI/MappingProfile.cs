@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 
 
-namespace EventAPI
+namespace EventAPI.Models
 {
     public class MappingProfile : Profile
     {

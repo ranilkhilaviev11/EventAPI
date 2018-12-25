@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using EventAPI;
 using AutoMapper;
 
-namespace EventAPI.Controllers
+namespace EventAPI.Models
 {
     [Route("api/type")]
     [ApiController]

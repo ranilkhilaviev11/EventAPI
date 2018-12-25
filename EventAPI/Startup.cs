@@ -14,7 +14,7 @@ using AutoMapper;
 
 
 
-namespace EventAPI
+namespace EventAPI.Models
 {
     public class Startup
     {
@@ -24,13 +24,14 @@ namespace EventAPI
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IConfiguration>(Configuration);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            /*services.AddSwaggerGen(c =>
+           /* services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "Contactsе API", Version = "v1" });
             });
@@ -63,7 +64,7 @@ namespace EventAPI
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=participants}/{id?}");
             });
             /*app.UseSwagger();
             app.UseSwaggerUI(c =>

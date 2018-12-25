@@ -9,7 +9,7 @@ using EventAPI;
 using AutoMapper;
 
 
-namespace EventAPI.Controllers
+namespace EventAPI.Models
 {
     [Route("api/hotel")]
     [ApiController]

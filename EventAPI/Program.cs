@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 
 
-namespace EventAPI
+namespace EventAPI.Models
 {
     public class Program
     {

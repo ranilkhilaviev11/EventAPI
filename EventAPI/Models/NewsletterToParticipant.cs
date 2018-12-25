@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EventAPI
+namespace EventAPI.Models
 {
     public partial class NewsletterToParticipant
     {

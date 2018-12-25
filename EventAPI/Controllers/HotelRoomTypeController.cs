@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using EventAPI;
 using AutoMapper;
 
-namespace EventAPI.Controllers
-{
+namespace EventAPI.Models
+{ 
     [Route("api/hotel_room_type")]
     [ApiController]
     public class HotelRoomTypeController : ControllerBase

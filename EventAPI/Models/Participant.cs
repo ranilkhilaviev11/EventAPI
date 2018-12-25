@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-namespace EventAPI
+namespace EventAPI.Models
 {
-    public partial class Participant
+    public class Participant: BaseEntity
     {
-        public Participant()
+        /*public Participant()
         {
             NewsletterToParticipant = new HashSet<NewsletterToParticipant>();
             ParticipantToEventProgElem = new HashSet<ParticipantToEventProgElem>();
-        }
+        }*/
 
         public int Id { get; set; }
         public string Surname { get; set; }
