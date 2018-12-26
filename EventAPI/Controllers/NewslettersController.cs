@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EventAPI;
+using AutoMapper;
+
+
 
 namespace EventAPI.Controllers
 {
@@ -14,37 +17,59 @@ namespace EventAPI.Controllers
     public class NewslettersController : ControllerBase
     {
         MailingContext _context = new MailingContext();
-
-
+        
+       
+           
+          
+        
         // GET: api/Newsletters
-        [HttpGet]
+       [HttpGet]
         public object GetNewsletter()
         {
-            var _newsletter = _context.Newsletter.GroupJoin(_context.NewsletterToParticipant,
+            List<NewsletterDTO> list_newsletters = Mapper.Map<List<Newsletter>, List<NewsletterDTO>>(_context.Newsletter.ToList());
+            List<NewsletterToParticipantDTO> list_newsletters_to_participants = Mapper.Map<List<NewsletterToParticipant>,
+                List<NewsletterToParticipantDTO>>(_context.NewsletterToParticipant.ToList());
+            var newsletter_to_participant_dto_groups = from c in list_newsletters_to_participants
+                                                       group c by c.NewsletterId;
+            
+            var _newsletter_dto = list_newsletters.Join(newsletter_to_participant_dto_groups,
                 p => p.Id,
-                t => t.NewsletterId,
-                (p, t) => new
-                {
-                    Id = p.Id,
-                    EventId = p.EventId,
-                    SendDateTime = p.SendDateTime,
-                    Message = p.Message,
-                    File = p.File,
-                    Participants = p.NewsletterToParticipant
-                });
-            return _newsletter;
+                t => t.Key,
+                (p, t) => new { Id = p.Id, EventId = p.EventId, SendDateTime = p.SendDateTime,
+                    Message = p.Message, File = p.File, Participants = t.ToHashSet() }
+                );
+            
+            return _newsletter_dto.ToList();
         }
 
         // GET: api/Newsletters/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetNewsletter([FromRoute] int id)
+        public object GetNewsletter([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var newsletter = await _context.Newsletter.FindAsync(id);
+            List<NewsletterDTO> list_newsletters = Mapper.Map<List<Newsletter>, List<NewsletterDTO>>(_context.Newsletter.ToList());
+            List<NewsletterToParticipantDTO> list_newsletters_to_participants = Mapper.Map<List<NewsletterToParticipant>,
+                List<NewsletterToParticipantDTO>>(_context.NewsletterToParticipant.ToList());
+            var newsletter_to_participant_dto_groups = from c in list_newsletters_to_participants
+                                                       group c by c.NewsletterId;
+
+            var _newsletter_dto = list_newsletters.Join(newsletter_to_participant_dto_groups,
+                p => p.Id,
+                t => t.Key,
+                (p, t) => new {
+                    Id = p.Id,
+                    EventId = p.EventId,
+                    SendDateTime = p.SendDateTime,
+                    Message = p.Message,
+                    File = p.File,
+                    Participants = t.ToHashSet()
+                }
+                );
+            var newsletter = _newsletter_dto.SingleOrDefault(u => u.Id == id);
 
             if (newsletter == null)
             {

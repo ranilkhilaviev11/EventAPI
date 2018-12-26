@@ -44,6 +44,15 @@ namespace EventAPI
                     .ForMember(x => x.hotel, opt => opt.Ignore())
                     .ForMember(x => x.Participant, opt => opt.Ignore())
                     .ReverseMap();
+                cfg.CreateMap<NewsletterToParticipantDTO, NewsletterToParticipant>()
+                    .ForMember(x => x.Newsletter, opt => opt.Ignore())
+                    .ForMember(x => x.Participant, opt => opt.Ignore())
+                    .ForMember(x => x.NewsletterId, opt => opt.Ignore())
+                    .ReverseMap();
+                cfg.CreateMap<NewsletterDTO, Newsletter>()
+                    .ForMember(x => x.NewsletterToParticipant, opt => opt.Ignore())
+                    .ForMember(x => x.Event, opt => opt.Ignore())
+                    .ReverseMap();
             });
 
 
