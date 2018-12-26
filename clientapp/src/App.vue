@@ -1,49 +1,47 @@
-<template>
-<div>
-  <table>
-    <tr v-for="contry in contries" :key="contry.id">
-      <td>{{contry.name}}</td>
 
-      <button @click="id = contry.id"></button>
-    </tr>
-  </table>
-  <h1>{{id}}</h1>
-  <hello-world msg="Fuck you"/>
+<template>
+<div id="app">
+    <p>
+      <router-link to="/Countries">Перейти к Countries | </router-link> 
+      <router-link to="/Companies">Перейти к Companies | </router-link>
+      <router-link to="/Events">Перейти к Events</router-link> 
+    </p>
+    <router-view></router-view>
 </div>
 </template>
 
+
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import $ from 'jquery'
+import Vue from 'vue'
+import Router from 'vue-router'
+import Countries from './components/Countries.vue'
+import Companies from './components/Companies.vue'
+import Events from './components/Events.vue'
+
+Vue.use(Router)
+
+
+
+const routes = [
+  { path: '/Countries', component: Countries },
+  { path: '/Companies', component: Companies },
+  {path: '/Events', component: Events}
+];
+const router = new Router({
+  routes
+});
+// const app = new Vue({
+//   router
+// }).$mount('#app');
+
 export default {
   name: 'app',
+  router,
   components: {
-    HelloWorld
-  },
-  created:function(){
-    var funk = this.updateTable;
-    $.ajax({
-      url: "https://localhost:44317/api/country",
-      type:"GET",
-      success: function(e){
-        funk(e); 
-      },
-      error:function(){
-        
-      }
-    });
-  },
-  data:function(){
-    return {
-      id:null,
-      contries:[]
-    }
-  },
-  methods:{
-    updateTable:function(e){
-      this.contries = e;
-    }
-  }
+    Countries,
+    // Events,
+    Companies
+  }  
 }
 </script>
 
