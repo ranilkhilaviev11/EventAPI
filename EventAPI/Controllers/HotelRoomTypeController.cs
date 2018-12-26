@@ -15,11 +15,7 @@ namespace EventAPI.Controllers
     public class HotelRoomTypeController : ControllerBase
     {
         MailingContext _context = new MailingContext();
-        private readonly IMapper _mapper;
-        public HotelRoomTypeController(IMapper mapper)
-        {
-            _mapper = mapper;
-        }
+
 
 
         // GET: api/hotel_room_type
@@ -27,9 +23,9 @@ namespace EventAPI.Controllers
         public IEnumerable<HotelRoomTypeDTO> GetHotelRoomType()
         {
             HotelRoomType hotel_room_type = new HotelRoomType();
-            var model = _mapper.Map<HotelRoomType, HotelRoomTypeDTO>(hotel_room_type);
+            var model = Mapper.Map<HotelRoomType, HotelRoomTypeDTO>(hotel_room_type);
             var hotel_room_types = _context.HotelRoomType.ToList();
-            List<HotelRoomTypeDTO> list_obj = _mapper.Map<List<HotelRoomType>, List<HotelRoomTypeDTO>>(hotel_room_types);
+            List<HotelRoomTypeDTO> list_obj = Mapper.Map<List<HotelRoomType>, List<HotelRoomTypeDTO>>(hotel_room_types);
             return list_obj;
         }
 
@@ -44,7 +40,7 @@ namespace EventAPI.Controllers
 
             var hotel_room_type = await _context.HotelRoomType
              .SingleOrDefaultAsync(u => u.Id == id);
-            var model = _mapper.Map<HotelRoomTypeDTO>(hotel_room_type);
+            var model = Mapper.Map<HotelRoomTypeDTO>(hotel_room_type);
 
             if (hotel_room_type == null)
             {
@@ -68,9 +64,8 @@ namespace EventAPI.Controllers
                 return BadRequest();
             }
 
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<HotelRoomTypeDTO, HotelRoomType>());
-            var mapper = config.CreateMapper();
-            HotelRoomType hotel_room_type_map = mapper.Map<HotelRoomType>(hotel_room_type);
+
+            HotelRoomType hotel_room_type_map = Mapper.Map<HotelRoomType>(hotel_room_type);
 
             _context.Entry(hotel_room_type_map).State = EntityState.Modified;
 
@@ -102,12 +97,11 @@ namespace EventAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-           
+
             try
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<HotelRoomTypeDTO, HotelRoomType>());
-                var mapper = config.CreateMapper();
-                HotelRoomType hotel_room_type_map = mapper.Map<HotelRoomType>(hotel_room_type);
+
+                HotelRoomType hotel_room_type_map = Mapper.Map<HotelRoomType>(hotel_room_type);
 
                 _context.HotelRoomType.Add(hotel_room_type_map);
                 await _context.SaveChangesAsync();
@@ -137,7 +131,7 @@ namespace EventAPI.Controllers
             }
 
             var hotel_room_type = await _context.HotelRoomType.FindAsync(id);
-            var model = _mapper.Map<HotelRoomTypeDTO>(hotel_room_type);
+            var model = Mapper.Map<HotelRoomTypeDTO>(hotel_room_type);
             if (hotel_room_type == null)
             {
                 return NotFound();

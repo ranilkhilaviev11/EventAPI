@@ -23,7 +23,7 @@ namespace EventAPI
         public virtual DbSet<EventProgElem> EventProgElem { get; set; }
         public virtual DbSet<Hotel> Hotel { get; set; }
         public virtual DbSet<HotelRoomType> HotelRoomType { get; set; }
-        public virtual DbSet<Newslettwe> Newsletter { get; set; }
+        public virtual DbSet<Newsletter> Newsletter { get; set; }
         public virtual DbSet<NewsletterToParticipant> NewsletterToParticipant { get; set; }
         public virtual DbSet<Participant> Participant { get; set; }
         public virtual DbSet<ParticipantToEventProgElem> ParticipantToEventProgElem { get; set; }
@@ -163,7 +163,7 @@ namespace EventAPI
                     .HasConstraintName("HotelRoomType_HotelId_fkey");
             });
 
-            modelBuilder.Entity<Newslettwe>(entity =>
+            modelBuilder.Entity<Newsletter>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 

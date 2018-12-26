@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace EventAPI
 {
-    public partial class Newslettwe
+    public partial class Newsletter
     {
-        public Newslettwe()
+        public Newsletter()
         {
             NewsletterToParticipant = new HashSet<NewsletterToParticipant>();
         }

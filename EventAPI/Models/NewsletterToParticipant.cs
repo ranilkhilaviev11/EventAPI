@@ -9,7 +9,7 @@ namespace EventAPI
         public int NewsletterId { get; set; }
         public int ParticipantId { get; set; }
 
-        public Newslettwe Newsletter { get; set; }
+        public Newsletter Newsletter { get; set; }
         public Participant Participant { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace EventAPI
         public Events()
         {
             EventProgElem = new HashSet<EventProgElem>();
-            Newsletter = new HashSet<Newslettwe>();
+            Newsletter = new HashSet<Newsletter>();
             Participant = new HashSet<Participant>();
         }
 
@@ -21,7 +21,7 @@ namespace EventAPI
         public DateTime? Endreg { get; set; }
 
         public ICollection<EventProgElem> EventProgElem { get; set; }
-        public ICollection<Newslettwe> Newsletter { get; set; }
+        public ICollection<Newsletter> Newsletter { get; set; }
         public ICollection<Participant> Participant { get; set; }
     }
 }

@@ -17,19 +17,15 @@ namespace EventAPI.Controllers
     {
 
         MailingContext _context = new MailingContext();
-        private readonly IMapper _mapper;
-        public HotelsController(IMapper mapper)
-        {
-            _mapper = mapper;
-        }
+    
         // GET: api/Hotels
         [HttpGet]
         public IEnumerable<HotelDTO> GetHotel()
         {
             Hotel hotel_name = new Hotel();
-            var model = _mapper.Map<Hotel, HotelDTO>(hotel_name);
+            var model = Mapper.Map<Hotel, HotelDTO>(hotel_name);
             var hotels = _context.Hotel.ToList();
-            List<HotelDTO> list_obj = _mapper.Map<List<Hotel>, List<HotelDTO>>(hotels);
+            List<HotelDTO> list_obj = Mapper.Map<List<Hotel>, List<HotelDTO>>(hotels);
             return list_obj;
             
         }
@@ -45,7 +41,7 @@ namespace EventAPI.Controllers
 
             var _hotel = await _context.Hotel
             .SingleOrDefaultAsync(u => u.Id == id);
-            var model = _mapper.Map<HotelDTO>(_hotel);
+            var model = Mapper.Map<HotelDTO>(_hotel);
 
             if (model == null)
             {
@@ -68,9 +64,8 @@ namespace EventAPI.Controllers
             {
                 return BadRequest();
             }
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<HotelDTO, Hotel>());
-            var mapper = config.CreateMapper();
-            Hotel hotel_map = mapper.Map<Hotel>(_hotel);
+
+            Hotel hotel_map = Mapper.Map<Hotel>(_hotel);
 
             _context.Entry(hotel_map).State = EntityState.Modified;
 
@@ -105,9 +100,7 @@ namespace EventAPI.Controllers
 
             try
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<HotelDTO, Hotel>());
-                var mapper = config.CreateMapper();
-                Hotel hotel_map = mapper.Map<Hotel>(_hotel);
+                Hotel hotel_map = Mapper.Map<Hotel>(_hotel);
 
                 _context.Hotel.Add(hotel_map);
                 await _context.SaveChangesAsync();
@@ -134,7 +127,7 @@ namespace EventAPI.Controllers
 
             var _hotel = await _context.Hotel
            .SingleOrDefaultAsync(u => u.Id == id);
-            var model = _mapper.Map<HotelDTO>(_hotel);
+            var model = Mapper.Map<HotelDTO>(_hotel);
             if (_hotel == null)
             {
                 return NotFound();

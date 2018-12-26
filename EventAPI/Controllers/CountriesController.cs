@@ -15,17 +15,13 @@ namespace EventAPI.Controllers
     public class CountriesController : ControllerBase
     {
         MailingContext _context = new MailingContext();
-        private readonly List<Country> _countries;
-        public CountriesController()
-        {
-            _countries = _context.Country.ToList();
-        }
+
 
         [HttpGet]
         public IEnumerable<CountryDTO> GetCountry()
         {
 
-            List<CountryDTO> list_obj = Mapper.Map(_countries, new List<CountryDTO>());
+            List<CountryDTO> list_obj = Mapper.Map(_context.Country.ToList(), new List<CountryDTO>());
 
             return list_obj;
         }

@@ -15,17 +15,13 @@ namespace EventAPI.Controllers
     public class CompaniesController : ControllerBase
     {
         MailingContext _context = new MailingContext();
-        private readonly List<Company> _companies;
-        public CompaniesController()
-        {
-            _companies = _context.Company.ToList();
-        }
+        
 
         // GET: api/Companies
         [HttpGet]
         public IEnumerable<CompanyDTO> GetCompany()
         { 
-            List<CompanyDTO> list_obj = Mapper.Map(_companies, new List<CompanyDTO>());
+            List<CompanyDTO> list_obj = Mapper.Map(_context.Company.ToList(), new List<CompanyDTO>());
             return list_obj;
         }
 
@@ -97,9 +93,8 @@ namespace EventAPI.Controllers
             }
             try
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<CompanyDTO, Company>());
-                var mapper = config.CreateMapper();
-                Company company_map = mapper.Map<Company>(_company);
+               
+                Company company_map = Mapper.Map<Company>(_company);
                 _context.Company.Add(company_map);
                 await _context.SaveChangesAsync();
             }
