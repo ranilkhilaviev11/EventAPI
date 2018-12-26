@@ -41,13 +41,13 @@ namespace EventAPI
             });
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
-            
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            
+            app.UseCors(e=>e.AllowAnyOrigin());
             dc.PostCountries();
             if (env.IsDevelopment())
             {
@@ -57,7 +57,7 @@ namespace EventAPI
             {
                 app.UseHsts();
             }
-
+            
             app.UseHttpsRedirection();
             app.UseMvc();
             app.UseSwagger();

@@ -1,0 +1,36 @@
+﻿<html>
+<head>
+<title>Shit</title>
+</head>
+<body>
+    <div>
+        <table id='table'></table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        var document = document.getElementById("table");
+        $.ajax({
+            url: "/api/country",
+            type:"GET",
+            success: function(e){
+                printCounts(document, e)  
+            },
+            error:function(){
+                
+            }
+        );
+
+        function printCounts(doc, counts){
+            counts.forEach(c => {
+                var tr = document.createElement('tr')
+                var name = document.createElement('td');
+                name.innerText = c.name;
+                tr.appendChild(name);
+                doc.appendChild(tr);
+            });
+        }
+    </script>
+</body>
+</html>
+
+

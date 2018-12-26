@@ -17,7 +17,6 @@ namespace EventAPI
         public List<Country> myobjList;
         public void PostCountries()
         {
-
             if (!_context.Country.Any())
             {
                 StreamReader re = new StreamReader("countries_ru.json");
